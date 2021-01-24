@@ -18,17 +18,17 @@ function toOpenMenu() {
   thirdLine.classList.toggle('line--3--active');
   page.classList.toggle('page__non-scroll');
   links.forEach(link => link.classList.toggle('nav__link--open'));
+
+  list.addEventListener('click', event => {
+    const target = event.target;
+
+    if (!target.classList.contains('nav__link--open')) {
+      return;
+    }
+
+    return toOpenMenu();
+  });
 };
-
-list.addEventListener('click', event => {
-  const target = event.target;
-
-  if (!target.classList.contains('nav__link')) {
-    return;
-  }
-
-  return toOpenMenu();
-});
 
 function checkMediaQuery() {
   if (window.innerWidth > 768) {
